@@ -1,0 +1,50 @@
+{
+  "name": "ai-hustler",
+  "version": "1.0.0",
+  "description": "AI赚钱黑客 - 用AI工具快速变现的终极技能包",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "jest",
+    "build": "webpack"
+  },
+  "keywords": [
+    "ai",
+    "money", 
+    "hustle",
+    "赚钱",
+    "arbitrage",
+    "automation"
+  ],
+  "author": "AIHustler <your-email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/ai-hustler"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/ai-hustler/issues"
+  },
+  "homepage": "https://github.com/your-username/ai-hustler#readme",
+  "dependencies": {
+    "openai": "^4.0.0",
+    "puppeteer": "^21.0.0",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0",
+    "fs-extra": "^11.0.0",
+    "chalk": "^4.1.2",
+    "inquirer": "^8.2.6",
+    "ora": "^5.4.1",
+    "table": "^6.8.1",
+    "moment": "^2.29.4",
+    "csv-writer": "^1.6.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "webpack": "^5.0.0",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,95 @@
+name: ai-hustler
+displayName: 🤖 AI赚钱黑客
+description: 用AI工具快速变现的终极技能包 - 发现套利机会、生成高价值提示词、自动化内容生产
+version: 1.0.0
+author: AIHustler
+icon: 🤖
+category: finance
+keywords: [ai, money, hustle, 赚钱, 套利, 副业]
+license: MIT
+homepage: https://github.com/your-username/ai-hustler
+repository: https://github.com/your-username/ai-hustler
+bugs: https://github.com/your-username/ai-hustler/issues
+
+runtime: node
+minimumOpenClawVersion: "1.5.0"
+
+permissions:
+  - web
+  - fs
+  - exec
+  - sessions
+  - memory
+  - message
+
+capabilities:
+  - background
+  - scheduled
+  - interactive
+
+config:
+  - name: ai_api_key
+    type: string
+    description: OpenAI API密钥
+    required: true
+  - name: target_platforms
+    type: array
+    description: 目标平台 [fiverr, zhubajie, weibo, xiaohongshu]
+    default: ["fiverr", "zhubajie"]
+  - name: content_niche
+    type: string
+    description: 内容细分领域
+    default: "科技数码"
+  - name: auto_publish
+    type: boolean
+    description: 是否自动发布内容
+    default: false
+
+commands:
+  discover-opportunities:
+    description: 发现AI套利机会
+    usage: ai-hustler discover-opportunities [--platforms] [--min-price]
+    examples:
+      - ai-hustler discover-opportunities
+      - ai-hustler discover-opportunities --platforms fiverr --min-price 50
+
+  prompt-cash:
+    description: 生成高价值提示词
+    usage: ai-hustler prompt-cash <需求描述> [--style] [--complexity]
+    examples:
+      - ai-hustler prompt-cash "小红书美妆文案"
+      - ai-hustler prompt-cash "电商产品描述" --style professional
+
+  content-arbitrage:
+    description: AI内容套利模式
+    usage: ai-hustler content-arbitrage [--platform] [--count] [--niche]
+    examples:
+      - ai-hustler content-arbitrage --platform xiaohongshu --count 10
+      - ai-hustler content-arbitrage --platform weibo --niche 科技
+
+  data-annotation:
+    description: 数据标注众包任务
+    usage: ai-hustler data-annotation [--platforms] [--auto]
+    examples:
+      - ai-hustler data-annotation
+      - ai-hustler data-annotation --auto --platforms scale,remotasks
+
+  client-finder:
+    description: 寻找潜在客户
+    usage: ai-hustler client-finder [--service] [--location]
+    examples:
+      - ai-hustler client-finder --service "AI客服"
+      - ai-hustler client-finder --service "文案生成" --location 上海
+
+  earning-tracker:
+    description: 收入追踪器
+    usage: ai-hustler earning-tracker [--period] [--export]
+    examples:
+      - ai-hustler earning-tracker
+      - ai-hustler earning-tracker --period month --export csv
+
+scripts:
+  install: npm install
+  dev: npm run dev
+  test: npm test
+  build: npm run build

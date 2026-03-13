@@ -117,7 +117,27 @@ ai-hustler annotation --platforms scale,remotasks --auto
 └─────────┴──────────────┴──────────┴────────────┴──────────┘
 ```
 
-### 5️⃣ 收入追踪器 `ai-hustler earnings`
+### 5️⃣ AI项目分析器 `ai-hustler analyze`
+
+```bash
+# 分析AI项目机会
+ai-hustler analyze --service AI客服 --location 全国
+```
+
+**输出示例：**
+```
+🎯 分析完成！找到 8 个项目机会
+
+🎯 项目机会 1:
+类型: AI客服
+需求: 企业智能客服系统，降低人工成本
+市场潜力: 高
+技术难度: 中
+预估收益: ¥8000
+💡 建议: 从中小企业入手，提供定制化客服解决方案
+```
+
+### 6️⃣ 收入追踪器 `ai-hustler earnings`
 
 ```bash
 # 查看收入统计

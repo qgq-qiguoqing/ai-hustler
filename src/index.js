@@ -6,7 +6,7 @@ const { discoverOpportunities } = require('./commands/discover');
 const { promptCash } = require('./commands/prompt-cash');
 const { contentArbitrage } = require('./commands/content-arbitrage');
 const { dataAnnotation } = require('./commands/data-annotation');
-const { clientFinder } = require('./commands/client-finder');
+const { projectAnalyzer } = require('./commands/project-analyzer');
 const { earningTracker } = require('./commands/earning-tracker');
 
 const program = new Command();
@@ -101,27 +101,29 @@ program
     }
   });
 
-// 寻找客户
+// 项目分析器
 program
-  .command('client-finder')
-  .alias('clients')
-  .description('寻找潜在客户')
+  .command('project-analyzer')
+  .alias('analyze')
+  .description('AI项目分析和建议')
   .option('-s, --service <service>', '服务类型', 'AI客服')
   .option('-l, --location <location>', '地区', '全国')
   .action(async (options) => {
-    const spinner = ora('正在寻找潜在客户...').start();
+    const spinner = ora('正在分析AI项目机会...').start();
     try {
-      const clients = await clientFinder(options);
-      spinner.succeed(`找到 ${clients.length} 个潜在客户！`);
-      clients.forEach((client, index) => {
-        console.log(chalk.green(`\n🎯 客户 ${index + 1}:`));
-        console.log(chalk.cyan(`公司: ${client.company}`));
-        console.log(chalk.cyan(`需求: ${client.needs}`));
-        console.log(chalk.cyan(`预算: ¥${client.budget}`));
-        console.log(chalk.cyan(`联系方式: ${client.contact}`));
+      const projects = await projectAnalyzer(options);
+      spinner.succeed(`分析完成！找到 ${projects.length} 个项目机会`);
+      projects.forEach((project, index) => {
+        console.log(chalk.green(`\n🎯 项目机会 ${index + 1}:`));
+        console.log(chalk.cyan(`类型: ${project.type}`));
+        console.log(chalk.cyan(`需求: ${project.needs}`));
+        console.log(chalk.cyan(`市场潜力: ${project.marketPotential}`));
+        console.log(chalk.cyan(`技术难度: ${project.techDifficulty}`));
+        console.log(chalk.cyan(`预估收益: ¥${project.estimatedEarning}`));
+        console.log(chalk.yellow(`💡 建议: ${project.suggestion}`));
       });
     } catch (error) {
-      spinner.fail('搜索失败: ' + error.message);
+      spinner.fail('分析失败: ' + error.message);
     }
   });
 
@@ -168,7 +170,7 @@ program
           { name: '💡 生成提示词', value: 'prompt' },
           { name: '📝 内容套利', value: 'content' },
           { name: '🏷️ 数据标注', value: 'annotation' },
-          { name: '🔍 寻找客户', value: 'clients' },
+          { name: '🔍 项目分析', value: 'analyze' },
           { name: '📊 收入统计', value: 'earnings' }
         ]
       }
@@ -185,7 +187,18 @@ program
         ]);
         await program.parseAsync(['node', 'ai-hustler', 'prompt-cash', requirement]);
         break;
-      // ... 其他模式
+      case 'content':
+        await program.parseAsync(['node', 'ai-hustler', 'content-arbitrage']);
+        break;
+      case 'annotation':
+        await program.parseAsync(['node', 'ai-hustler', 'data-annotation']);
+        break;
+      case 'analyze':
+        await program.parseAsync(['node', 'ai-hustler', 'project-analyzer']);
+        break;
+      case 'earnings':
+        await program.parseAsync(['node', 'ai-hustler', 'earning-tracker']);
+        break;
     }
   });
 
@@ -197,6 +210,9 @@ if (process.argv.length === 2) {
   console.log(chalk.cyan('  ai-hustler discover     - 发现套利机会'));
   console.log(chalk.cyan('  ai-hustler prompt-cash  - 生成提示词赚钱'));
   console.log(chalk.cyan('  ai-hustler content      - 内容套利模式'));
+  console.log(chalk.cyan('  ai-hustler annotation   - 数据标注任务'));
+  console.log(chalk.cyan('  ai-hustler analyze      - AI项目分析'));
+  console.log(chalk.cyan('  ai-hustler earnings     - 收入追踪'));
   console.log(chalk.cyan('  ai-hustler interactive  - 交互模式\n'));
 }
 

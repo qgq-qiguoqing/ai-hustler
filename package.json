@@ -1,7 +1,7 @@
 {
   "name": "ai-hustler",
   "version": "1.0.0",
-  "description": "AI赚钱黑客 - 用AI工具快速变现的终极技能包",
+  "description": "AI工具包：套利发现、提示词生成、内容创作、任务聚合、项目分析、收入追踪"
   "main": "src/index.js",
   "scripts": {
     "dev": "node src/index.js",
